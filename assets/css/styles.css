@@ -1,0 +1,513 @@
+/* ===========================================================
+   Cape Town ePortfolio — shared styles
+   Design language: field-journal from a working trip where two
+   oceans meet — ink notes, sandstone and clay tones, a wayfinding
+   route line stitching the weeks together.
+=========================================================== */
+
+:root {
+  --paper: #f3ecdd;
+  --paper-raised: #faf6ec;
+  --ink: #1c1a17;
+  --ink-soft: #4a463e;
+  --ocean: #1b4b5a;
+  --ocean-deep: #0f313d;
+  --gold: #c08a34;
+  --clay: #a6491f;
+  --sage: #6b7a5e;
+  --line: rgba(28, 26, 23, 0.14);
+
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+
+  --max: 1120px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ---------- Skip link / focus ---------- */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 16px;
+  z-index: 100;
+}
+.skip-link:focus { left: 12px; top: 12px; }
+
+:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 3px;
+}
+
+/* ---------- Nav ---------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(243, 236, 221, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.site-nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+.brand {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand .mark {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--clay);
+  display: inline-block;
+}
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  color: var(--clay);
+  border-color: var(--clay);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding: 96px 0 88px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 78% 18%, rgba(192, 138, 52, 0.18), transparent 55%),
+    linear-gradient(180deg, var(--ocean) 0%, var(--ocean-deep) 100%);
+  color: var(--paper-raised);
+}
+.hero .eyebrow {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 22px;
+}
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 5.2vw, 4.4rem);
+  line-height: 1.04;
+  margin: 0 0 26px;
+  max-width: 15ch;
+  letter-spacing: -0.01em;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero p.lede {
+  font-size: 1.2rem;
+  max-width: 56ch;
+  color: rgba(250, 246, 236, 0.86);
+  margin: 0 0 36px;
+}
+.hero-figures {
+  display: flex;
+  gap: 40px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+.hero-figures .fig {
+  border-top: 1px solid rgba(250, 246, 236, 0.28);
+  padding-top: 12px;
+  min-width: 120px;
+}
+.hero-figures .fig .num {
+  font-family: var(--mono);
+  font-size: 1.6rem;
+  color: var(--gold);
+  display: block;
+}
+.hero-figures .fig .lbl {
+  font-size: 0.85rem;
+  color: rgba(250, 246, 236, 0.7);
+}
+
+/* Coastline silhouette divider under hero */
+.coastline {
+  display: block;
+  width: 100%;
+  height: 46px;
+  margin-top: -2px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 22px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btn-light {
+  color: var(--paper-raised);
+}
+.btn-light:hover {
+  background: var(--paper-raised);
+  color: var(--ocean-deep);
+}
+.btn-dark {
+  color: var(--ink);
+}
+.btn-dark:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ---------- Sections ---------- */
+section { padding: 88px 0; }
+section.tight { padding: 64px 0; }
+.section-head {
+  margin-bottom: 48px;
+}
+.kicker {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin: 0 0 14px;
+}
+.section-head h2 {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.section-head p.deck {
+  margin: 18px 0 0;
+  max-width: 62ch;
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+}
+
+.rule {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+/* ---------- Three-up cards (Program / Project / Beyond) ---------- */
+.trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.trio .card {
+  background: var(--paper-raised);
+  padding: 34px 30px;
+}
+.trio .card .tag {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ocean);
+  margin: 0 0 14px;
+}
+.trio .card h3 {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  margin: 0 0 12px;
+}
+.trio .card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+}
+
+/* ---------- Thank you band ---------- */
+.thanks {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 80px 0;
+  text-align: center;
+}
+.thanks .kicker { color: var(--gold); }
+.thanks blockquote {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+  font-style: italic;
+  line-height: 1.5;
+  max-width: 46ch;
+  margin: 0 auto;
+}
+.thanks .photo-slot {
+  margin: 40px auto 0;
+  max-width: 480px;
+}
+
+/* ---------- Photo slot placeholders ---------- */
+.photo-slot {
+  border: 1.5px dashed rgba(28,26,23,0.28);
+  background: rgba(28,26,23,0.03);
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  border-radius: 2px;
+}
+.thanks .photo-slot {
+  border-color: rgba(243,236,221,0.35);
+  background: rgba(243,236,221,0.05);
+  color: rgba(243,236,221,0.6);
+}
+.photo-slot.wide { aspect-ratio: 16/7; }
+.photo-slot img { width:100%; height:100%; object-fit:cover; border-radius: 2px; }
+
+/* ---------- Reflection intro ---------- */
+.reflection-intro p {
+  font-size: 1.12rem;
+  max-width: 74ch;
+  color: var(--ink-soft);
+}
+.reflection-intro p + p { margin-top: 20px; }
+
+/* ---------- Route / week timeline ---------- */
+.route {
+  position: relative;
+}
+.route::before {
+  content: "";
+  position: absolute;
+  left: 108px;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--clay) 0 6px,
+    transparent 6px 12px
+  );
+}
+.week {
+  position: relative;
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  gap: 0 40px;
+  padding: 44px 0;
+}
+.week:not(:last-child) { border-bottom: 1px solid var(--line); }
+.week .marker {
+  position: relative;
+}
+.week .marker .dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--clay);
+  position: absolute;
+  left: 101px;
+  top: 6px;
+}
+.week .marker .wk {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.week .marker .wk strong {
+  display: block;
+  font-size: 1.9rem;
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--ocean);
+  letter-spacing: 0;
+}
+.week .body h3 {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  margin: 0 0 14px;
+  font-weight: 600;
+}
+.week .body p {
+  margin: 0 0 20px;
+  color: var(--ink-soft);
+  max-width: 68ch;
+}
+.week .photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  max-width: 520px;
+}
+
+/* ---------- Walkthrough / feature list ---------- */
+.feature-list {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 40px;
+}
+.feature {
+  background: var(--paper-raised);
+  display: grid;
+  grid-template-columns: 220px 1fr 320px;
+  gap: 32px;
+  padding: 34px 30px;
+  align-items: center;
+}
+.feature .fname {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ocean);
+}
+.feature .fdesc {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+}
+.feature .photo-slot { aspect-ratio: 16/10; }
+
+.stack-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.pill {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  padding: 6px 12px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+
+/* ---------- Contact / footer band ---------- */
+.contact-band {
+  background: var(--ocean-deep);
+  color: var(--paper-raised);
+  padding: 80px 0;
+  text-align: center;
+}
+.contact-band .kicker { color: var(--gold); }
+.contact-band h2 {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  margin: 0 0 18px;
+}
+.contact-band p {
+  max-width: 52ch;
+  margin: 0 auto 32px;
+  color: rgba(250, 246, 236, 0.82);
+}
+.contact-links {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+footer.site-footer {
+  padding: 28px 0;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 880px) {
+  .trio { grid-template-columns: 1fr; }
+  .feature { grid-template-columns: 1fr; text-align: left; }
+  .week { grid-template-columns: 1fr; }
+  .route::before { left: 5px; }
+  .week .marker .dot { left: -1px; top: 3px; }
+  .week .marker { padding-left: 24px; margin-bottom: 14px; }
+  .week .body { padding-left: 24px; }
+  .nav-links { gap: 18px; }
+  .site-nav .wrap { flex-direction: column; height: auto; padding: 14px 20px; gap: 10px; }
+}
+
+@media (max-width: 560px) {
+  .wrap { padding: 0 20px; }
+  .hero { padding: 64px 0 56px; }
+  section { padding: 60px 0; }
+  .week .photos { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
